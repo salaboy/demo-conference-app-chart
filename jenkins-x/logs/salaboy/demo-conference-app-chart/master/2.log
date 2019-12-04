@@ -1,0 +1,54 @@
+
+Showing logs for build [32msalaboy-demo-conference-app-cha-4jtpg-2[0m stage [32mfrom-build-pack[0m and container [32mstep-credential-initializer-kfjhd[0m
+{"level":"warn","ts":1575449420.8815002,"logger":"fallback-logger","caller":"logging/config.go:69","msg":"Fetch GitHub commit ID from kodata failed: \"ref: refs/heads/master\" is not a valid GitHub commit ID"}
+{"level":"info","ts":1575449420.8833568,"logger":"fallback-logger","caller":"creds-init/main.go:40","msg":"Credentials initialized."}
+
+Showing logs for build [32msalaboy-demo-conference-app-cha-4jtpg-2[0m stage [32mfrom-build-pack[0m and container [32mstep-working-dir-initializer-fb4bc[0m
+{"level":"warn","ts":1575449422.2788074,"logger":"fallback-logger","caller":"logging/config.go:69","msg":"Fetch GitHub commit ID from kodata failed: open /var/run/ko/HEAD: no such file or directory"}
+{"level":"info","ts":1575449422.3826509,"logger":"fallback-logger","caller":"bash/main.go:65","msg":"Successfully executed command \"mkdir -p /workspace/source\""}
+
+Showing logs for build [32msalaboy-demo-conference-app-cha-4jtpg-2[0m stage [32mfrom-build-pack[0m and container [32mstep-place-tools[0m
+
+Showing logs for build [32msalaboy-demo-conference-app-cha-4jtpg-2[0m stage [32mfrom-build-pack[0m and container [32mstep-git-source-salaboy-demo-conference-app-cha-bbhmz[0m
+{"level":"warn","ts":1575449428.4279268,"logger":"fallback-logger","caller":"logging/config.go:69","msg":"Fetch GitHub commit ID from kodata failed: \"ref: refs/heads/master\" is not a valid GitHub commit ID"}
+{"level":"info","ts":1575449430.2654977,"logger":"fallback-logger","caller":"git/git.go:102","msg":"Successfully cloned https://github.com/*******/demo-conference-app-chart.git @ v0.0.2 in path /workspace/source"}
+
+Showing logs for build [32msalaboy-demo-conference-app-cha-4jtpg-2[0m stage [32mfrom-build-pack[0m and container [32mstep-git-merge[0m
+Using SHAs from PULL_REFS=master:22d7d91f643a4494ac8bf186177fe62737810984
+WARNING: no SHAs to merge, falling back to initial cloned commit
+
+Showing logs for build [32msalaboy-demo-conference-app-cha-4jtpg-2[0m stage [32mfrom-build-pack[0m and container [32mstep-setup-jx-git-credentials[0m
+Generated Git credentials file /builder/home/git/credentials
+
+Showing logs for build [32msalaboy-demo-conference-app-cha-4jtpg-2[0m stage [32mfrom-build-pack[0m and container [32mstep-build-basic-auth-username[0m
+/builder/home/basic-auth-user.json
+
+Showing logs for build [32msalaboy-demo-conference-app-cha-4jtpg-2[0m stage [32mfrom-build-pack[0m and container [32mstep-build-basic-auth-password[0m
+/builder/home/basic-auth-pass.json
+
+Showing logs for build [32msalaboy-demo-conference-app-cha-4jtpg-2[0m stage [32mfrom-build-pack[0m and container [32mstep-build-release[0m
+rm -rf conference/charts
+rm -rf conference/conference*.tgz
+rm -rf conference/requirements.lock
+helm init --client-only
+Creating /builder/home/.helm 
+Creating /builder/home/.helm/repository 
+Creating /builder/home/.helm/repository/cache 
+Creating /builder/home/.helm/repository/local 
+Creating /builder/home/.helm/plugins 
+Creating /builder/home/.helm/starters 
+Creating /builder/home/.helm/cache/archive 
+Creating /builder/home/.helm/repository/repositories.yaml 
+Adding stable repo with URL: https://kubernetes-charts.storage.googleapis.com 
+Adding local repo with URL: http://127.0.0.1:8879/charts 
+$HELM_HOME has been configured at /builder/home/.helm.
+Not installing Tiller due to 'client-only' flag having been set
+helm repo add jenkins-x http://chartmuseum.jenkins-x.io
+"jenkins-x" has been added to your repositories
+helm repo add releases http://jenkins-x-chartmuseum:8080
+"releases" has been added to your repositories
+helm dependency build conference
+Error: error converting YAML to JSON: yaml: line 10: did not find expected key
+make: *** [build] Error 1
+[31m
+Pipeline failed on stage 'from-build-pack' : container 'step-build-release'. The execution of the pipeline has stopped.[0m
