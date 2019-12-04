@@ -1,0 +1,25 @@
+dependencies:
+- host: github.com
+  owner: salaboy
+  repo: demo-conference-site
+  url: https://github.com/salaboy/demo-conference-site
+  version: 0.0.44
+  versionURL: https://github.com/salaboy/demo-conference-site/releases/tag/v0.0.44
+- host: github.com
+  owner: salaboy
+  repo: demo-conference-agenda
+  url: https://github.com/salaboy/conference-agenda
+  version: 0.0.37
+  versionURL: https://github.com/salaboy/conference-agenda/releases/tag/v0.0.37
+- host: github.com
+  owner: salaboy
+  repo: demo-conference-c4p
+  url: https://github.com/salaboy/demo-conference-cp4
+  version: 0.0.66
+  versionURL: https://github.com/salaboy/demo-conference-c4p/releases/tag/v0.0.66
+- host: github.com
+  owner: salaboy
+  repo: demo-conference-email
+  url: https://github.com/salaboy/demo-conference-email
+  version: 0.0.18
+  versionURL: https://github.com/salaboy/demo-conference-email/releases/tag/v0.0.18
