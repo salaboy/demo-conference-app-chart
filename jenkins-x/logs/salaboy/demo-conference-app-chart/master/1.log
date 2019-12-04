@@ -1,0 +1,32 @@
+
+Showing logs for build [32msalaboy-demo-conference-app-cha-1[0m stage [32mfrom-build-pack[0m and container [32mstep-credential-initializer-q2sps[0m
+{"level":"warn","ts":1575449250.3204122,"logger":"fallback-logger","caller":"logging/config.go:69","msg":"Fetch GitHub commit ID from kodata failed: \"ref: refs/heads/master\" is not a valid GitHub commit ID"}
+{"level":"info","ts":1575449250.3214521,"logger":"fallback-logger","caller":"creds-init/main.go:40","msg":"Credentials initialized."}
+
+Showing logs for build [32msalaboy-demo-conference-app-cha-1[0m stage [32mfrom-build-pack[0m and container [32mstep-working-dir-initializer-r5vl7[0m
+{"level":"warn","ts":1575449251.5887752,"logger":"fallback-logger","caller":"logging/config.go:69","msg":"Fetch GitHub commit ID from kodata failed: open /var/run/ko/HEAD: no such file or directory"}
+{"level":"info","ts":1575449251.5911043,"logger":"fallback-logger","caller":"bash/main.go:65","msg":"Successfully executed command \"mkdir -p /workspace/source\""}
+
+Showing logs for build [32msalaboy-demo-conference-app-cha-1[0m stage [32mfrom-build-pack[0m and container [32mstep-place-tools[0m
+
+Showing logs for build [32msalaboy-demo-conference-app-cha-1[0m stage [32mfrom-build-pack[0m and container [32mstep-git-source-salaboy-demo-conference-app-cha-6xncw[0m
+{"level":"warn","ts":1575449258.6593893,"logger":"fallback-logger","caller":"logging/config.go:69","msg":"Fetch GitHub commit ID from kodata failed: \"ref: refs/heads/master\" is not a valid GitHub commit ID"}
+{"level":"info","ts":1575449259.8366044,"logger":"fallback-logger","caller":"git/git.go:102","msg":"Successfully cloned https://github.com/*******/demo-conference-app-chart.git @ v0.0.1 in path /workspace/source"}
+
+Showing logs for build [32msalaboy-demo-conference-app-cha-1[0m stage [32mfrom-build-pack[0m and container [32mstep-git-merge[0m
+Using SHAs from PULL_REFS=master:0d88a92d38970ecf78d71117a0775d87e252b1ab
+WARNING: no SHAs to merge, falling back to initial cloned commit
+
+Showing logs for build [32msalaboy-demo-conference-app-cha-1[0m stage [32mfrom-build-pack[0m and container [32mstep-setup-jx-git-credentials[0m
+Generated Git credentials file /builder/home/git/credentials
+
+Showing logs for build [32msalaboy-demo-conference-app-cha-1[0m stage [32mfrom-build-pack[0m and container [32mstep-build-basic-auth-username[0m
+/builder/home/basic-auth-user.json
+
+Showing logs for build [32msalaboy-demo-conference-app-cha-1[0m stage [32mfrom-build-pack[0m and container [32mstep-build-basic-auth-password[0m
+/builder/home/basic-auth-pass.json
+
+Showing logs for build [32msalaboy-demo-conference-app-cha-1[0m stage [32mfrom-build-pack[0m and container [32mstep-build-release[0m
+make: *** No rule to make target `release'.  Stop.
+[31m
+Pipeline failed on stage 'from-build-pack' : container 'step-build-release'. The execution of the pipeline has stopped.[0m
