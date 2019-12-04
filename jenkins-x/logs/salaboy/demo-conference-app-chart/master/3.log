@@ -1,0 +1,110 @@
+
+Showing logs for build [32msalaboy-demo-conference-app-cha-ds7xr-3[0m stage [32mfrom-build-pack[0m and container [32mstep-credential-initializer-4nqb5[0m
+{"level":"warn","ts":1575449543.529279,"logger":"fallback-logger","caller":"logging/config.go:69","msg":"Fetch GitHub commit ID from kodata failed: \"ref: refs/heads/master\" is not a valid GitHub commit ID"}
+{"level":"info","ts":1575449543.5303633,"logger":"fallback-logger","caller":"creds-init/main.go:40","msg":"Credentials initialized."}
+
+Showing logs for build [32msalaboy-demo-conference-app-cha-ds7xr-3[0m stage [32mfrom-build-pack[0m and container [32mstep-working-dir-initializer-kffcl[0m
+{"level":"warn","ts":1575449544.8873565,"logger":"fallback-logger","caller":"logging/config.go:69","msg":"Fetch GitHub commit ID from kodata failed: open /var/run/ko/HEAD: no such file or directory"}
+{"level":"info","ts":1575449544.8890483,"logger":"fallback-logger","caller":"bash/main.go:65","msg":"Successfully executed command \"mkdir -p /workspace/source\""}
+
+Showing logs for build [32msalaboy-demo-conference-app-cha-ds7xr-3[0m stage [32mfrom-build-pack[0m and container [32mstep-place-tools[0m
+
+Showing logs for build [32msalaboy-demo-conference-app-cha-ds7xr-3[0m stage [32mfrom-build-pack[0m and container [32mstep-git-source-salaboy-demo-conference-app-cha-nndgl[0m
+{"level":"warn","ts":1575449551.1948473,"logger":"fallback-logger","caller":"logging/config.go:69","msg":"Fetch GitHub commit ID from kodata failed: \"ref: refs/heads/master\" is not a valid GitHub commit ID"}
+{"level":"info","ts":1575449552.4474368,"logger":"fallback-logger","caller":"git/git.go:102","msg":"Successfully cloned https://github.com/*******/demo-conference-app-chart.git @ v0.0.3 in path /workspace/source"}
+
+Showing logs for build [32msalaboy-demo-conference-app-cha-ds7xr-3[0m stage [32mfrom-build-pack[0m and container [32mstep-git-merge[0m
+Using SHAs from PULL_REFS=master:5091dafdb9c1fb8801d8697653efcf9b26897ea3
+WARNING: no SHAs to merge, falling back to initial cloned commit
+
+Showing logs for build [32msalaboy-demo-conference-app-cha-ds7xr-3[0m stage [32mfrom-build-pack[0m and container [32mstep-setup-jx-git-credentials[0m
+Generated Git credentials file /builder/home/git/credentials
+
+Showing logs for build [32msalaboy-demo-conference-app-cha-ds7xr-3[0m stage [32mfrom-build-pack[0m and container [32mstep-build-basic-auth-username[0m
+/builder/home/basic-auth-user.json
+
+Showing logs for build [32msalaboy-demo-conference-app-cha-ds7xr-3[0m stage [32mfrom-build-pack[0m and container [32mstep-build-basic-auth-password[0m
+/builder/home/basic-auth-pass.json
+
+Showing logs for build [32msalaboy-demo-conference-app-cha-ds7xr-3[0m stage [32mfrom-build-pack[0m and container [32mstep-build-release[0m
+rm -rf conference/charts
+rm -rf conference/conference*.tgz
+rm -rf conference/requirements.lock
+helm init --client-only
+Creating /builder/home/.helm 
+Creating /builder/home/.helm/repository 
+Creating /builder/home/.helm/repository/cache 
+Creating /builder/home/.helm/repository/local 
+Creating /builder/home/.helm/plugins 
+Creating /builder/home/.helm/starters 
+Creating /builder/home/.helm/cache/archive 
+Creating /builder/home/.helm/repository/repositories.yaml 
+Adding stable repo with URL: https://kubernetes-charts.storage.googleapis.com 
+Adding local repo with URL: http://127.0.0.1:8879/charts 
+$HELM_HOME has been configured at /builder/home/.helm.
+Not installing Tiller due to 'client-only' flag having been set
+helm repo add jenkins-x http://chartmuseum.jenkins-x.io
+"jenkins-x" has been added to your repositories
+helm repo add releases http://jenkins-x-chartmuseum:8080
+"releases" has been added to your repositories
+helm dependency build conference
+Hang tight while we grab the latest from your chart repositories...
+...Unable to get an update from the "local" chart repository (http://127.0.0.1:8879/charts):
+	Get http://127.0.0.1:8879/charts/index.yaml: dial tcp 127.0.0.1:8879: connect: connection refused
+...Successfully got an update from the "releases" chart repository
+...Successfully got an update from the "jenkins-x" chart repository
+...Successfully got an update from the "stable" chart repository
+Update Complete.
+Saving 4 charts
+Downloading demo-conference-agenda from repo http://jenkins-x-chartmuseum:8080
+Downloading demo-conference-c4p from repo http://jenkins-x-chartmuseum:8080
+Downloading demo-conference-site from repo http://jenkins-x-chartmuseum:8080
+Downloading demo-conference-email from repo http://jenkins-x-chartmuseum:8080
+Deleting outdated charts
+helm lint conference
+==> Linting conference
+Lint OK
+
+1 chart(s) linted, no failures
+sed -i -e "s/version:.*/version: 0.0.3/" conference/Chart.yaml
+helm package conference
+Successfully packaged chart and saved it to: /workspace/source/conference-0.0.3.tgz
+curl --fail -u *****:********** --data-binary "@conference-0.0.3.tgz" http://jenkins-x-chartmuseum:8080/api/charts
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100  4830  100    14  100  4816   1338   449k --:--:-- --:--:-- --:--:--  427k
+{"saved":true}rm -rf conference*.tgz
+** step changelog  --verbose --version 0.0.3 --rev 5091dafdb9c1fb8801d8697653efcf9b26897ea3
+Converted /workspace/source to an unshallow repository
+DEBUG: Using helmBinary helm with feature flag: template-mode
+Generating change log from git ref 3ccd781b5b95b7a87a5a0ec787b1e5b5eaf09f94 => 5091dafdb9c1fb8801d8697653efcf9b26897ea3
+DEBUG: merging pipeline secrets with local secrets
+DEBUG: merging pipeline secrets with local secrets
+DEBUG: Found commits:
+DEBUG:   commit 5091dafdb9c1fb8801d8697653efcf9b26897ea3
+DEBUG:   Author: ******* <*******@gmail.com>
+DEBUG:   Date: Wed Dec  4 08:51:46 2019
+DEBUG:       fixing typo
+
+
+
+Associating user x-0 in users.jenkins.io with email *******@gmail.com to git GitProvider user with login -0 as emails match
+Adding label jenkins.io/git-github-userid=-0 to user x-0 in users.jenkins.io
+WARNING: Failed to enrich commit 5091dafdb9c1fb8801d8697653efcf9b26897ea3 with issues: User.jenkins.io "x-0" is invalid: metadata.labels: Invalid value: "-0": a valid label must be an empty string or consist of alphanumeric characters, '-', '_' or '.', and must start and end with an alphanumeric character (e.g. 'MyValue',  or 'my_value',  or '12345', regex used for validation is '(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])?')
+Associating user x-0 in users.jenkins.io with email *******@gmail.com to git GitProvider user with login -0 as emails match
+Adding label jenkins.io/git-github-userid=-0 to user x-0 in users.jenkins.io
+WARNING: Failed to enrich commit 5091dafdb9c1fb8801d8697653efcf9b26897ea3 with issues: User.jenkins.io "x-0" is invalid: metadata.labels: Invalid value: "-0": a valid label must be an empty string or consist of alphanumeric characters, '-', '_' or '.', and must start and end with an alphanumeric character (e.g. 'MyValue',  or 'my_value',  or '12345', regex used for validation is '(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])?')
+Finding issues in commit messages using git format
+DEBUG: Generated release notes:
+
+## Changes
+
+* fixing typo
+
+WARNING: No release found for *******/demo-conference-app-chart and tag v0.0.3 so creating a new release
+Updated the release information at https://github.com/*******/demo-conference-app-chart/releases/tag/v0.0.3
+DEBUG: Not adding dependency matrix /workspace/source/dependency-matrix/matrix.yaml as does not exist
+generated: /workspace/source/conference/templates/release.yaml
+Created Release demo-conference-app-chart-0-0-3 resource in namespace **
+Updating PipelineActivity *******-demo-conference-app-chart-master-3 with version 0.0.3
+Updated PipelineActivities *******-demo-conference-app-chart-master-3 with release notes URL: https://github.com/*******/demo-conference-app-chart/releases/tag/v0.0.3
