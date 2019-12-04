@@ -1,5 +1,5 @@
 CHART_REPO := http://jenkins-x-chartmuseum:8080
-NAME := conference
+NAME := demo-conference
 OS := $(shell uname)
 
 CHARTMUSEUM_CREDS_USR := $(shell cat /builder/home/basic-auth-user.json)
@@ -13,29 +13,29 @@ setup: init
 	helm repo add releases ${CHART_REPO}
 
 build: clean setup
-	helm dependency build conference
-	helm lint conference
+	helm dependency build demo-conference
+	helm lint demo-conference
 
 install: clean build
-	helm upgrade ${NAME} conference --install
+	helm upgrade ${NAME} demo-conference --install
 
 upgrade: clean build
-	helm upgrade ${NAME} conference --install
+	helm upgrade ${NAME} demo-conference --install
 
 delete:
-	helm delete --purge ${NAME} conference
+	helm delete --purge ${NAME} demo-conference
 
 clean:
-	rm -rf conference/charts
-	rm -rf conference/${NAME}*.tgz
-	rm -rf conference/requirements.lock
+	rm -rf demo-conference/charts
+	rm -rf demo-conference/${NAME}*.tgz
+	rm -rf demo-conference/requirements.lock
 
 release: clean build
 ifeq ($(OS),Darwin)
-	sed -i "" -e "s/version:.*/version: $(VERSION)/" conference/Chart.yaml
+	sed -i "" -e "s/version:.*/version: $(VERSION)/" demo-conference/Chart.yaml
 
 else ifeq ($(OS),Linux)
-	sed -i -e "s/version:.*/version: $(VERSION)/" conference/Chart.yaml
+	sed -i -e "s/version:.*/version: $(VERSION)/" demo-conference/Chart.yaml
 else
 	exit -1
 endif
