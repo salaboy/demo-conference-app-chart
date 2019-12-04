@@ -7,8 +7,7 @@ dependencies:
   version: 0.0.66
 - name: demo-conference-site
   repository: http://jenkins-x-chartmuseum:8080
-  version: 0.0.44
+  version: 0.0.45
 - name: demo-conference-email
   repository: http://jenkins-x-chartmuseum:8080
   version: 0.0.18
-
