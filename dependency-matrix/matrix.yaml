@@ -15,8 +15,8 @@ dependencies:
   owner: salaboy
   repo: demo-conference-c4p
   url: https://github.com/salaboy/demo-conference-c4p
-  version: 0.0.68
-  versionURL: https://github.com/salaboy/demo-conference-c4p/releases/tag/v0.0.68
+  version: 0.0.69
+  versionURL: https://github.com/salaboy/demo-conference-c4p/releases/tag/v0.0.69
 - host: github.com
   owner: salaboy
   repo: demo-conference-email
