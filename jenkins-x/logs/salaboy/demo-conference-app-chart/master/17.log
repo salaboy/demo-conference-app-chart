@@ -1,0 +1,119 @@
+
+Showing logs for build [32msalaboy-demo-conference-app-cha-6v9pd-17[0m stage [32mfrom-build-pack[0m and container [32mstep-credential-initializer-npblv[0m
+{"level":"warn","ts":1575814886.7244866,"logger":"fallback-logger","caller":"logging/config.go:69","msg":"Fetch GitHub commit ID from kodata failed: \"ref: refs/heads/master\" is not a valid GitHub commit ID"}
+{"level":"info","ts":1575814886.7312841,"logger":"fallback-logger","caller":"creds-init/main.go:40","msg":"Credentials initialized."}
+
+Showing logs for build [32msalaboy-demo-conference-app-cha-6v9pd-17[0m stage [32mfrom-build-pack[0m and container [32mstep-working-dir-initializer-4hvpk[0m
+{"level":"warn","ts":1575814887.5727642,"logger":"fallback-logger","caller":"logging/config.go:69","msg":"Fetch GitHub commit ID from kodata failed: open /var/run/ko/HEAD: no such file or directory"}
+{"level":"info","ts":1575814887.5793264,"logger":"fallback-logger","caller":"bash/main.go:65","msg":"Successfully executed command \"mkdir -p /workspace/source\""}
+
+Showing logs for build [32msalaboy-demo-conference-app-cha-6v9pd-17[0m stage [32mfrom-build-pack[0m and container [32mstep-place-tools[0m
+
+Showing logs for build [32msalaboy-demo-conference-app-cha-6v9pd-17[0m stage [32mfrom-build-pack[0m and container [32mstep-git-source-salaboy-demo-conference-app-cha-pjt9b[0m
+{"level":"warn","ts":1575814893.6155677,"logger":"fallback-logger","caller":"logging/config.go:69","msg":"Fetch GitHub commit ID from kodata failed: \"ref: refs/heads/master\" is not a valid GitHub commit ID"}
+{"level":"info","ts":1575814894.7715,"logger":"fallback-logger","caller":"git/git.go:102","msg":"Successfully cloned https://github.com/*******/demo-conference-app-chart.git @ v0.0.17 in path /workspace/source"}
+
+Showing logs for build [32msalaboy-demo-conference-app-cha-6v9pd-17[0m stage [32mfrom-build-pack[0m and container [32mstep-git-merge[0m
+Using SHAs from PULL_REFS=master:bc1713dca1b2227f61fb9884a977416b2d898f42
+WARNING: no SHAs to merge, falling back to initial cloned commit
+
+Showing logs for build [32msalaboy-demo-conference-app-cha-6v9pd-17[0m stage [32mfrom-build-pack[0m and container [32mstep-setup-jx-git-credentials[0m
+Generated Git credentials file /builder/home/git/credentials
+
+Showing logs for build [32msalaboy-demo-conference-app-cha-6v9pd-17[0m stage [32mfrom-build-pack[0m and container [32mstep-build-basic-auth-username[0m
+/builder/home/basic-auth-user.json
+
+Showing logs for build [32msalaboy-demo-conference-app-cha-6v9pd-17[0m stage [32mfrom-build-pack[0m and container [32mstep-build-basic-auth-password[0m
+/builder/home/basic-auth-pass.json
+
+Showing logs for build [32msalaboy-demo-conference-app-cha-6v9pd-17[0m stage [32mfrom-build-pack[0m and container [32mstep-build-release[0m
+rm -rf demo-conference/charts
+rm -rf demo-conference/demo-conference*.tgz
+rm -rf demo-conference/requirements.lock
+helm init --client-only
+Creating /builder/home/.helm 
+Creating /builder/home/.helm/repository 
+Creating /builder/home/.helm/repository/cache 
+Creating /builder/home/.helm/repository/local 
+Creating /builder/home/.helm/plugins 
+Creating /builder/home/.helm/starters 
+Creating /builder/home/.helm/cache/archive 
+Creating /builder/home/.helm/repository/repositories.yaml 
+Adding stable repo with URL: https://kubernetes-charts.storage.googleapis.com 
+Adding local repo with URL: http://127.0.0.1:8879/charts 
+$HELM_HOME has been configured at /builder/home/.helm.
+Not installing Tiller due to 'client-only' flag having been set
+helm repo add jenkins-x http://chartmuseum.jenkins-x.io
+"jenkins-x" has been added to your repositories
+helm repo add releases http://jenkins-x-chartmuseum:8080
+"releases" has been added to your repositories
+helm dependency build demo-conference
+Hang tight while we grab the latest from your chart repositories...
+...Unable to get an update from the "local" chart repository (http://127.0.0.1:8879/charts):
+	Get http://127.0.0.1:8879/charts/index.yaml: dial tcp 127.0.0.1:8879: connect: connection refused
+...Successfully got an update from the "releases" chart repository
+...Successfully got an update from the "jenkins-x" chart repository
+...Successfully got an update from the "stable" chart repository
+Update Complete.
+Saving 4 charts
+Downloading demo-conference-agenda from repo http://jenkins-x-chartmuseum:8080
+Downloading demo-conference-c4p from repo http://jenkins-x-chartmuseum:8080
+Downloading demo-conference-site from repo http://jenkins-x-chartmuseum:8080
+Downloading demo-conference-email from repo http://jenkins-x-chartmuseum:8080
+Deleting outdated charts
+helm lint demo-conference
+==> Linting demo-conference
+Lint OK
+
+1 chart(s) linted, no failures
+sed -i -e "s/version:.*/version: 0.0.17/" demo-conference/Chart.yaml
+helm package demo-conference
+Successfully packaged chart and saved it to: /workspace/source/demo-conference-0.0.17.tgz
+curl --fail -u *****:********** --data-binary "@demo-conference-0.0.17.tgz" http://jenkins-x-chartmuseum:8080/api/charts
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100  4873  100    14  100  4859   1412   478k --:--:-- --:--:-- --:--:--  527k
+{"saved":true}rm -rf demo-conference*.tgz
+** step changelog  --verbose --version 0.0.17 --rev bc1713dca1b2227f61fb9884a977416b2d898f42
+Converted /workspace/source to an unshallow repository
+DEBUG: Using helmBinary helm with feature flag: template-mode
+Generating change log from git ref 9e58ee1938f6127a83c48bf6b90a77544bc4e90c => bc1713dca1b2227f61fb9884a977416b2d898f42
+DEBUG: merging pipeline secrets with local secrets
+DEBUG: merging pipeline secrets with local secrets
+DEBUG: Found commits:
+DEBUG:   commit bc1713dca1b2227f61fb9884a977416b2d898f42
+DEBUG:   Author: ******* <Salaboy@gmail.com>
+DEBUG:   Date: Sun Dec  8 14:20:54 2019
+DEBUG:       
+Merge pull request #10 from *******/bump-chart-version-a6156d3d-19c5-11ea-9936-d63535ed3def
+
+chore(deps): bump https://github.com/*******/demo-conference-c4p to 0.0.71
+
+
+DEBUG:   commit 3517e891c801731829e998e144dcf6447201d375
+DEBUG:   Author: jenkins-x-bot <jenkins-x@googlegroups.com>
+DEBUG:   Date: Sun Dec  8 14:18:47 2019
+DEBUG:       chore(deps): bump https://github.com/*******/demo-conference-c4p to 0.0.71
+
+Command run was `** step create pr chart --name demo-conference-cp4 --version 0.0.71 --repo https://github.com/*******/demo-conference-app-chart.git`
+
+
+
+WARNING: Failed to enrich commit 3517e891c801731829e998e144dcf6447201d375 with issues: users.jenkins.io "x-0" already exists
+WARNING: Failed to enrich commit 3517e891c801731829e998e144dcf6447201d375 with issues: users.jenkins.io "x-0" already exists
+Finding issues in commit messages using git format
+DEBUG: Generated release notes:
+
+## Changes
+
+### Chores
+
+* deps: bump https://github.com/*******/demo-conference-c4p to 0.0.71
+
+WARNING: No release found for *******/demo-conference-app-chart and tag v0.0.17 so creating a new release
+Updated the release information at https://github.com/*******/demo-conference-app-chart/releases/tag/v0.0.17
+Uploaded /workspace/source/dependency-matrix/matrix.yaml to release asset https://github.com/*******/demo-conference-app-chart/releases/download/v0.0.17/dependency-matrix.yaml
+generated: /workspace/source/demo-conference/templates/release.yaml
+Created Release demo-conference-app-chart-0-0-17 resource in namespace **
+Updating PipelineActivity *******-demo-conference-app-chart-master-17 with version 0.0.17
+Updated PipelineActivities *******-demo-conference-app-chart-master-17 with release notes URL: https://github.com/*******/demo-conference-app-chart/releases/tag/v0.0.17
