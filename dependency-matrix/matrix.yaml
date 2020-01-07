@@ -9,8 +9,8 @@ dependencies:
   owner: salaboy
   repo: demo-conference-agenda
   url: https://github.com/salaboy/demo-conference-agenda
-  version: 0.0.41
-  versionURL: https://github.com/salaboy/demo-conference-agenda/releases/tag/v0.0.41
+  version: 0.0.42
+  versionURL: https://github.com/salaboy/demo-conference-agenda/releases/tag/v0.0.42
 - host: github.com
   owner: salaboy
   repo: demo-conference-c4p
